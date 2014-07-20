@@ -12,7 +12,7 @@ By default only defined parameters are registered.
 If you want all environment variables be available then turn `whitelist: off`..
 
 
-## Example of kdyby/doctrine configuration via ENV variables
+## Example of kdyby/doctrine configuration
 
 ```neon
 env:
@@ -45,6 +45,6 @@ or in config of apache or fpm pool.
 
 # Limitations
 
-Only other 3rd party extension configuration is supported that means no variables in `nette` or `php`.
-Sections `parameters` and `services` are not supported. It is not possible at this time due to limitations of [nette/di](https://github.com/nette/di).
-Only **string names** and **scalar and null** values are supported. It is on purpose.
+* Only other 3rd party extension configuration is supported that means no variables in `nette` or `php`.
+* Sections `parameters` and `services` are not supported. It is not possible at this time due to limitations of [nette/di](https://github.com/nette/di).
+* Only **string names** and **scalar and null** values are supported. This one is on purpose.
