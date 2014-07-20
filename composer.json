@@ -1,0 +1,24 @@
+{
+	"name": "rixxi/env",
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "Michal Gebauer",
+			"homepage": "http://mishak.net"
+		}
+	],
+	"support": {
+		"email": "rixxi+mishak@mishak.net",
+		"issues": "https://github.com/rixxi/env/issues"
+	},
+	"require": {
+		"php": ">=5.3.1",
+        "nette/di": "~2.2",
+        "nette/utils": "~2.2"
+	},
+	"autoload": {
+		"psr-0": {
+			"Rixxi\\Env\\": "src/"
+		}
+	}
+}
