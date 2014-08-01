@@ -29,13 +29,22 @@ class EnvExtension extends Nette\DI\CompilerExtension
 		}
 		Validators::assert($config['whitelist'], 'bool');
 
-		foreach ($_ENV as $name => $value) {
-			if ($config['whitelist'] && !isset($parameters[$name])) {
-				continue;
+		if (strpos(ini_get('variables_order'), 'E') === TRUE) {
+			foreach ($_ENV as $name => $value) {
+				if ($config['whitelist'] && !isset($parameters[$name])) {
+					continue;
+				}
+				self::assertEnvName($name);
+				self::assertEnvValue($value, $name);
+				$parameters[$name] = $value;
 			}
-			self::assertEnvName($name);
-			self::assertEnvValue($value, $name);
-			$parameters[$name] = $value;
+
+		} else {
+			foreach (array_keys($config['parameters']) as $name) {
+				if (($value = getenv($name)) !== FALSE) {
+					$parameters[$name] = $value;
+				}
+			}
 		}
 
 		$this->getContainerBuilder()->parameters += array(self::PARAMETER_CONTAINER => $parameters);
